@@ -1,0 +1,36 @@
+#include <iostream>
+
+// Function to calculate the area of a square
+double area(double sideLength) {
+    return sideLength * sideLength;
+}
+
+// Function to calculate the area of a rectangle
+double area(double length, double width) {
+    return length * width;
+}
+
+// Function to calculate the area of a circle
+double area(double radius) {
+    return 3.14159 * radius * radius; // using pi value of 3.14159
+}
+
+int main() {
+    // Calculate area of a square with side length 5
+    double squareArea = area(5.0);
+    std::cout << "Area of the square with side length 5: " << squareArea << std::endl;
+
+    // Calculate area of a rectangle with length 4 and width 3
+    double rectangleArea = area(4.0, 3.0);
+    std::cout << "Area of the rectangle with length 4 and width 3: " << rectangleArea << std::endl;
+
+    // Calculate area of a circle with radius 2.5
+    double circleArea = area(2.5);
+    std::cout << "Area of the circle with radius 2.5: " << circleArea << std::endl;
+
+    return 0;
+}
+output :
+Area of the square with side length 5: 25
+Area of the rectangle with length 4 and width 3: 12
+Area of the circle with radius 2.5: 19.6344
