@@ -1,0 +1,36 @@
+#include <iostream>
+
+// Function to find maximum of two integers
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+// Function to find maximum of two floating-point numbers
+float max(float a, float b) {
+    return (a > b) ? a : b;
+}
+
+// Function to find maximum of two characters
+char max(char a, char b) {
+    return (a > b) ? a : b;
+}
+
+int main() {
+    // Testing integer max function
+    int maxInt = max(3, 7);
+    std::cout << "Max of 3 and 7 (integers): " << maxInt << std::endl;
+
+    // Testing floating-point max function
+    float maxFloat = max(3.5f, 4.2f);
+    std::cout << "Max of 3.5 and 4.2 (floats): " << maxFloat << std::endl;
+
+    // Testing character max function
+    char maxChar = max('a', 'Z');
+    std::cout << "Max of 'a' and 'Z' (characters): " << maxChar << std::endl;
+
+    return 0;
+}
+out put :
+Max of 3 and 7 (integers): 7
+Max of 3.5 and 4.2 (floats): 4.2
+Max of 'a' and 'Z' (characters): a
