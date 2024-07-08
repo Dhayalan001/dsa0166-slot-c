@@ -1,0 +1,67 @@
+#include <iostream>
+
+const int ROWS = 2;
+const int COLS = 2;
+
+// Function to print a matrix
+void printMatrix(int mat[][COLS], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            std::cout << mat[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+}
+
+// Function to calculate the sum of two matrices
+void sum(int mat1[][COLS], int mat2[][COLS], int result[][COLS], int rows, int cols) {
+    for (int i = 0; i < rows; ++i) {
+        for (int j = 0; j < cols; ++j) {
+            result[i][j] = mat1[i][j] + mat2[i][j];
+        }
+    }
+}
+
+// Function to calculate the sum of two arrays
+void sum(int arr1[], int arr2[], int result[], int size) {
+    for (int i = 0; i < size; ++i) {
+        result[i] = arr1[i] + arr2[i];
+    }
+}
+
+int main() {
+    // Define two matrices
+    int matrix1[ROWS][COLS] = {{1, 2},
+                               {3, 4}};
+    int matrix2[ROWS][COLS] = {{5, 6},
+                               {7, 8}};
+    int resultMatrix[ROWS][COLS];
+
+    // Calculate and print the sum of matrices
+    sum(matrix1, matrix2, resultMatrix, ROWS, COLS);
+    std::cout << "Sum of matrices:" << std::endl;
+    printMatrix(resultMatrix, ROWS, COLS);
+    std::cout << std::endl;
+
+    // Define two arrays
+    int array1[] = {1, 2, 3};
+    int array2[] = {4, 5, 6};
+    int resultArray[3];
+
+    // Calculate and print the sum of arrays
+    sum(array1, array2, resultArray, 3);
+    std::cout << "Sum of arrays:" << std::endl;
+    for (int i = 0; i < 3; ++i) {
+        std::cout << resultArray[i] << " ";
+    }
+    std::cout << std::endl;
+
+    return 0;
+}
+out put:
+Sum of matrices:
+6 8 
+10 12 
+
+Sum of arrays:
+5 7 9 
