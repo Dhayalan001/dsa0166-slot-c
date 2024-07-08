@@ -1,0 +1,24 @@
+#include <iostream>
+
+class Functor {
+public:
+    // Overload the () operator
+    int operator()(int a, int b) {
+        return a + b;
+    }
+};
+
+int main() {
+    Functor add;
+
+    int result = add(3, 4);
+    std::cout << "Result of add(3, 4): " << result << std::endl;
+
+    result = add(10, 20);
+    std::cout << "Result of add(10, 20): " << result << std::endl;
+
+    return 0;
+}
+out put:
+Result of add(3, 4): 7
+Result of add(10, 20): 30
