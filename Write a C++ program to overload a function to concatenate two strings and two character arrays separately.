@@ -1,0 +1,55 @@
+#include <iostream>
+#include <cstring> // For strlen and strcat
+
+// Function to concatenate two strings
+char* concatenate(const char* str1, const char* str2) {
+    // Calculate the lengths of str1 and str2
+    int len1 = strlen(str1);
+    int len2 = strlen(str2);
+
+    // Allocate memory for the concatenated string
+    char* result = new char[len1 + len2 + 1];
+
+    // Copy str1 and str2 into the result string
+    strcpy(result, str1);
+    strcat(result, str2);
+
+    return result;
+}
+
+// Function to concatenate two character arrays (C-strings)
+char* concatenate(const char arr1[], const char arr2[]) {
+    // Calculate the lengths of arr1 and arr2
+    int len1 = strlen(arr1);
+    int len2 = strlen(arr2);
+
+    // Allocate memory for the concatenated array
+    char* result = new char[len1 + len2 + 1];
+
+    // Copy arr1 and arr2 into the result array
+    strcpy(result, arr1);
+    strcat(result, arr2);
+
+    return result;
+}
+
+int main() {
+    // Concatenate two strings
+    const char* str1 = "Hello, ";
+    const char* str2 = "world!";
+    char* concatenatedStr = concatenate(str1, str2);
+    std::cout << "Concatenated string: " << concatenatedStr << std::endl;
+    delete[] concatenatedStr;
+
+    // Concatenate two character arrays (C-strings)
+    const char arr1[] = "Welcome ";
+    const char arr2[] = "to C++!";
+    char* concatenatedArr = concatenate(arr1, arr2);
+    std::cout << "Concatenated character array: " << concatenatedArr << std::endl;
+    delete[] concatenatedArr;
+
+    return 0;
+}
+out put :
+Concatenated string: Hello, world!
+Concatenated character array: Welcome to C++!
