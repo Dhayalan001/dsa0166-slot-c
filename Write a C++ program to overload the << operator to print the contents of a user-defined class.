@@ -1,0 +1,29 @@
+#include <iostream>
+#include <string>
+
+class Person {
+private:
+    std::string name;
+    int age;
+
+public:
+    Person(std::string name, int age) : name(name), age(age) {}
+
+    // Overload the << operator
+    friend std::ostream& operator<<(std::ostream& os, const Person& person);
+};
+
+// Definition of the << operator overload
+std::ostream& operator<<(std::ostream& os, const Person& person) {
+    os << "Name: " << person.name << ", Age: " << person.age;
+    return os;
+}
+
+int main() {
+    Person person("Alice", 30);
+    std::cout << person << std::endl;
+    return 0;
+}
+
+out put :
+Name: Alice, Age: 30
