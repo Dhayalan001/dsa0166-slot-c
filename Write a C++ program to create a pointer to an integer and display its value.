@@ -1,0 +1,16 @@
+#include <iostream>
+
+int main() {
+    // Create an integer variable
+    int number = 10;
+
+    // Create a pointer to the integer
+    int* ptr = &number;
+
+    // Display the value of the integer using the pointer
+    std::cout << "The value of the integer is: " << *ptr << std::endl;
+
+    return 0;
+}
+out put:
+The value of the integer is: 10
