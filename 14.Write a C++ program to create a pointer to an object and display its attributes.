@@ -1,0 +1,33 @@
+#include <iostream>
+#include <string>
+
+// Define a simple class
+class Person {
+private:
+    std::string name;
+    int age;
+
+public:
+    // Constructor
+    Person(std::string n, int a) : name(n), age(a) {}
+
+    // Method to display attributes
+    void display() {
+        std::cout << "Name: " << name << ", Age: " << age << std::endl;
+    }
+};
+
+int main() {
+    // Create an object of type Person
+    Person person("John Doe", 30);
+
+    // Create a pointer to the object
+    Person* ptr = &person;
+
+    // Display attributes using the pointer
+    ptr->display();
+
+    return 0;
+}
+out put :
+Name: John Doe, Age: 30
