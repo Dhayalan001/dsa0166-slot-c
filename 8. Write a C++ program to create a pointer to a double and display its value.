@@ -1,0 +1,16 @@
+#include <iostream>
+
+int main() {
+    // Create a double variable
+    double number = 8.12345;
+
+    // Create a pointer to the double
+    double* ptr = &number;
+
+    // Display the value of the double using the pointer
+    std::cout << "The value of the double is: " << *ptr << std::endl;
+
+    return 0;
+}
+out put:
+The value of the double is: 8.12345
