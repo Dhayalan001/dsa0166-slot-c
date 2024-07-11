@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+// Base class Animal
+class Animal {
+public:
+    // Virtual function for move
+    virtual void move() const = 0;
+};
+
+// Derived class Bird
+class Bird : public Animal {
+public:
+    void move() const override {
+        std::cout << "Bird flies" << std::endl;
+    }
+};
+
+// Derived class Fish
+class Fish : public Animal {
+public:
+    void move() const override {
+        std::cout << "Fish swims" << std::endl;
+    }
+};
+
+int main() {
+    // Create a Bird object
+    Animal* bird = new Bird();
+    bird->move();
+
+    // Create a Fish object
+    Animal* fish = new Fish();
+    fish->move();
+
+    // Clean up
+    delete bird;
+    delete fish;
+
+    return 0;
+}
+out put:
+Bird flies
+Fish swims
+
