@@ -1,0 +1,69 @@
+#include <iostream>
+#include <cmath> // For sqrt function
+
+// Base class Shape
+class Shape {
+public:
+    // Virtual functions for area and perimeter
+    virtual double area() const = 0;
+    virtual double perimeter() const = 0;
+};
+
+// Derived class Rectangle
+class Rectangle : public Shape {
+private:
+    double width;
+    double height;
+public:
+    Rectangle(double w, double h) : width(w), height(h) {}
+
+    double area() const override {
+        return width * height;
+    }
+
+    double perimeter() const override {
+        return 2 * (width + height);
+    }
+};
+
+// Derived class Triangle
+class Triangle : public Shape {
+private:
+    double side1;
+    double side2;
+    double side3;
+public:
+    Triangle(double s1, double s2, double s3) : side1(s1), side2(s2), side3(s3) {}
+
+    double area() const override {
+        double s = (side1 + side2 + side3) / 2; // Semi-perimeter
+        return sqrt(s * (s - side1) * (s - side2) * (s - side3)); // Heron's formula
+    }
+
+    double perimeter() const override {
+        return side1 + side2 + side3;
+    }
+};
+
+int main() {
+    // Create a Rectangle object
+    Shape* rect = new Rectangle(5.0, 3.0);
+    std::cout << "Rectangle Area: " << rect->area() << std::endl;
+    std::cout << "Rectangle Perimeter: " << rect->perimeter() << std::endl;
+
+    // Create a Triangle object
+    Shape* tri = new Triangle(3.0, 4.0, 5.0);
+    std::cout << "Triangle Area: " << tri->area() << std::endl;
+    std::cout << "Triangle Perimeter: " << tri->perimeter() << std::endl;
+
+    // Clean up
+    delete rect;
+    delete tri;
+
+    return 0;
+}
+out put:
+Rectangle Area: 15
+Rectangle Perimeter: 16
+Triangle Area: 6
+Triangle Perimeter: 12
