@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+
+class Person {
+public:
+    
+    virtual void greet() const = 0;
+};
+
+class Student : public Person {
+public:
+    void greet() const override {
+        std::cout << "Hello, I'm a student." << std::endl;
+    }
+};
+
+
+class Teacher : public Person {
+public:
+    void greet() const override {
+        std::cout << "Hello, I'm a teacher." << std::endl;
+    }
+};
+
+int main() {
+    
+    Person* student = new Student();
+    student->greet();
+
+    
+    Person* teacher = new Teacher();
+    teacher->greet();
+
+    
+    delete student;
+    delete teacher;
+
+    return 0;
+}
+out put:
+Hello, I'm a student.
+Hello, I'm a teacher.
+
