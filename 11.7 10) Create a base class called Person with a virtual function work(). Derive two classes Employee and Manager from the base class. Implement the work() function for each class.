@@ -1,0 +1,43 @@
+#include <iostream>
+#include <string>
+
+
+class Person {
+public:
+    
+    virtual void work() const = 0;
+};
+
+class Employee : public Person {
+public:
+    void work() const override {
+        std::cout << "Employee works on tasks assigned." << std::endl;
+    }
+};
+
+
+class Manager : public Person {
+public:
+    void work() const override {
+        std::cout << "Manager oversees the team's work." << std::endl;
+    }
+};
+
+int main() {
+    
+    Person* employee = new Employee();
+    employee->work();
+
+    
+    Person* manager = new Manager();
+    manager->work();
+
+    
+    delete employee;
+    delete manager;
+
+    return 0;
+}
+out put:
+Employee works on tasks assigned.
+Manager oversees the team's work.
