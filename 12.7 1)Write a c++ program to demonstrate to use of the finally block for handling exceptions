@@ -1,0 +1,54 @@
+#include <iostream>
+#include <exception>
+
+class Finally {
+public:
+    Finally(std::function<void()> func) : func_(func) {}
+    ~Finally() { func_(); }
+
+private:
+    std::function<void()> func_;
+};
+
+void riskyOperation(bool shouldThrow) {
+    Finally cleanup([]() {
+        std::cout << "Cleaning up resources..." << std::endl;
+    });
+
+    std::cout << "Starting risky operation..." << std::endl;
+
+    if (shouldThrow) {
+        throw std::runtime_error("An error occurred!");
+    }
+
+    std::cout << "Risky operation completed successfully." << std::endl;
+}
+
+int main() {
+    try {
+        riskyOperation(false);
+        std::cout << "No exception occurred." << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
+
+    std::cout << "----------" << std::endl;
+
+    try {
+        riskyOperation(true);
+        std::cout << "No exception occurred." << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Caught exception: " << e.what() << std::endl;
+    }
+
+    return 0;
+}
+out put:Starting risky operation...
+Risky operation completed successfully.
+Cleaning up resources...
+No exception occurred.
+----------
+Starting risky operation...
+Cleaning up resources...
+Caught exception: An error occurred!
+
