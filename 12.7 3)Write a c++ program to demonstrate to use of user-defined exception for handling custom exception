@@ -1,0 +1,36 @@
+#include <iostream>
+#include <exception>
+#include <string>
+
+// Define a custom exception class
+class MyCustomException : public std::exception {
+public:
+    MyCustomException(const std::string& message) : msg_(message) {}
+
+    virtual const char* what() const noexcept override {
+        return msg_.c_str();
+    }
+
+private:
+    std::string msg_;
+};
+
+void functionThatThrows() {
+    throw MyCustomException("Something went wrong in functionThatThrows!");
+}
+
+int main() {
+    try {
+        functionThatThrows();
+    } catch (const MyCustomException& e) {
+        std::cout << "Caught MyCustomException: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Caught standard exception: " << e.what() << std::endl;
+    } catch (...) {
+        std::cout << "Caught an unknown exception." << std::endl;
+    }
+
+    return 0;
+}
+out put:
+Caught MyCustomException: Something went wrong in functionThatThrows!
