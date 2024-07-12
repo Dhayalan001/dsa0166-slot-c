@@ -1,0 +1,43 @@
+#include <iostream>
+#include <stdexcept>
+
+// Function that throws a runtime error
+void throwRuntimeError() {
+    throw std::runtime_error("Runtime error occurred in throwRuntimeError");
+}
+
+// Function that throws an out of range error
+void throwOutOfRangeError() {
+    throw std::out_of_range("Out of range error occurred in throwOutOfRangeError");
+}
+
+int main() {
+    try {
+        std::cout << "Calling throwRuntimeError..." << std::endl;
+        throwRuntimeError();
+    } catch (const std::runtime_error& e) {
+        std::cout << "Caught std::runtime_error: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Caught std::exception: " << e.what() << std::endl;
+    } catch (...) {
+        std::cout << "Caught an unknown exception." << std::endl;
+    }
+
+    try {
+        std::cout << "Calling throwOutOfRangeError..." << std::endl;
+        throwOutOfRangeError();
+    } catch (const std::out_of_range& e) {
+        std::cout << "Caught std::out_of_range: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Caught std::exception: " << e.what() << std::endl;
+    } catch (...) {
+        std::cout << "Caught an unknown exception." << std::endl;
+    }
+
+    return 0;
+}
+out put:
+Calling throwRuntimeError...
+Caught std::runtime_error: Runtime error occurred in throwRuntimeError
+Calling throwOutOfRangeError...
+Caught std::out_of_range: Out of range error occurred in throwOutOfRangeError
