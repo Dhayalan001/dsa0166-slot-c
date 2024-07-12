@@ -1,0 +1,42 @@
+#include <iostream>
+#include <stdexcept>
+
+void innerFunction() {
+    try {
+        std::cout << "Inner function started." << std::endl;
+        throw std::runtime_error("Exception from inner function!");
+        std::cout << "Inner function ended." << std::endl; // This line will not be executed
+    } catch (const std::runtime_error& e) {
+        std::cout << "Caught exception in inner function: " << e.what() << std::endl;
+        throw; // Rethrow the exception
+    }
+}
+
+void outerFunction() {
+    try {
+        std::cout << "Outer function started." << std::endl;
+        innerFunction();
+        std::cout << "Outer function ended." << std::endl; // This line will not be executed if innerFunction throws
+    } catch (const std::exception& e) {
+        std::cout << "Caught exception in outer function: " << e.what() << std::endl;
+    }
+}
+
+int main() {
+    try {
+        std::cout << "Main started." << std::endl;
+        outerFunction();
+        std::cout << "Main ended." << std::endl; // This line will be executed
+    } catch (...) {
+        std::cout << "Caught an unexpected exception in main." << std::endl;
+    }
+
+    return 0;
+}
+out put:
+Main started.
+Outer function started.
+Inner function started.
+Caught exception in inner function: Exception from inner function!
+Caught exception in outer function: Exception from inner function!
+Main ended.
