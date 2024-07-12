@@ -1,0 +1,39 @@
+#include <iostream>
+#include <stdexcept>
+#include <vector>
+
+void functionWithRuntimeError() {
+    throw std::runtime_error("Runtime error occurred in functionWithRuntimeError");
+}
+
+void functionWithOutOfRangeError() {
+    std::vector<int> v(5);
+    v.at(10) = 100; // This will throw std::out_of_range
+}
+
+int main() {
+    try {
+        functionWithRuntimeError();
+    } catch (const std::runtime_error& e) {
+        std::cout << "Caught std::runtime_error: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Caught std::exception: " << e.what() << std::endl;
+    } catch (...) {
+        std::cout << "Caught an unknown exception." << std::endl;
+    }
+
+    try {
+        functionWithOutOfRangeError();
+    } catch (const std::out_of_range& e) {
+        std::cout << "Caught std::out_of_range: " << e.what() << std::endl;
+    } catch (const std::exception& e) {
+        std::cout << "Caught std::exception: " << e.what() << std::endl;
+    } catch (...) {
+        std::cout << "Caught an unknown exception." << std::endl;
+    }
+
+    return 0;
+}
+out put:
+Caught std::runtime_error: Runtime error occurred in functionWithRuntimeError
+Caught std::out_of_range: vector::_M_range_check: __n (which is 10) >= this->size() (which is 5)
