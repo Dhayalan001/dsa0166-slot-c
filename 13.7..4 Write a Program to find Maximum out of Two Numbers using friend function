@@ -1,0 +1,25 @@
+#include <iostream>
+
+class Compare {
+private:
+    int num1, num2;
+
+public:
+    Compare(int a, int b) : num1(a), num2(b) {}
+
+    // Declare the friend function
+    friend int findMax(Compare c);
+};
+
+// Friend function definition
+int findMax(Compare c) {
+    return (c.num1 > c.num2) ? c.num1 : c.num2;
+}
+
+int main() {
+    Compare c(10, 20);
+    std::cout << "The maximum number is: " << findMax(c) << std::endl;
+    return 0;
+}
+out put:
+The maximum number is: 20
