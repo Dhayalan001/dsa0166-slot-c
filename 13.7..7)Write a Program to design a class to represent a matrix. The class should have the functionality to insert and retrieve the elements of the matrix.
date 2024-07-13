@@ -1,0 +1,75 @@
+#include <iostream>
+#include <vector>
+
+class Matrix {
+private:
+    std::vector<std::vector<int>> data;
+    int rows;
+    int cols;
+
+public:
+    // Constructor to initialize the matrix with given rows and columns
+    Matrix(int r, int c) : rows(r), cols(c) {
+        data.resize(rows, std::vector<int>(cols, 0));
+    }
+
+    // Function to insert an element into the matrix
+    void insertElement(int r, int c, int value) {
+        if (r >= 0 && r < rows && c >= 0 && c < cols) {
+            data[r][c] = value;
+        } else {
+            std::cout << "Invalid indices!" << std::endl;
+        }
+    }
+
+    // Function to retrieve an element from the matrix
+    int retrieveElement(int r, int c) const {
+        if (r >= 0 && r < rows && c >= 0 && c < cols) {
+            return data[r][c];
+        } else {
+            std::cout << "Invalid indices!" << std::endl;
+            return -1; // Returning -1 to indicate invalid index
+        }
+    }
+
+    // Function to display the matrix
+    void display() const {
+        for (const auto& row : data) {
+            for (const auto& elem : row) {
+                std::cout << elem << " ";
+            }
+            std::cout << std::endl;
+        }
+    }
+};
+
+int main() {
+    int rows = 3, cols = 3;
+    Matrix mat(rows, cols);
+
+    // Inserting elements into the matrix
+    mat.insertElement(0, 0, 1);
+    mat.insertElement(0, 1, 2);
+    mat.insertElement(0, 2, 3);
+    mat.insertElement(1, 0, 4);
+    mat.insertElement(1, 1, 5);
+    mat.insertElement(1, 2, 6);
+    mat.insertElement(2, 0, 7);
+    mat.insertElement(2, 1, 8);
+    mat.insertElement(2, 2, 9);
+
+    // Displaying the matrix
+    std::cout << "Matrix:" << std::endl;
+    mat.display();
+
+    // Retrieving an element from the matrix
+    int r = 1, c = 1;
+    std::cout << "Element at position (" << r << ", " << c << "): " << mat.retrieveElement(r, c) << std::endl;
+
+    return 0;
+}
+out put:Matrix:
+1 2 3 
+4 5 6 
+7 8 9 
+Element at position (1, 1): 5
