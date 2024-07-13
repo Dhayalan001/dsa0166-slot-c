@@ -1,0 +1,77 @@
+#include <iostream>
+#include <vector>
+#include <iomanip>
+
+class ShoppingItem {
+public:
+    int codeNo;
+    double price;
+
+    ShoppingItem(int code, double price) : codeNo(code), price(price) {}
+};
+
+class ShoppingList {
+private:
+    std::vector<ShoppingItem> items;
+
+public:
+    void addItem(int codeNo, double price) {
+        items.push_back(ShoppingItem(codeNo, price));
+    }
+
+    void deleteItem(int codeNo) {
+        for (auto it = items.begin(); it != items.end(); ++it) {
+            if (it->codeNo == codeNo) {
+                items.erase(it);
+                std::cout << "Item with code " << codeNo << " deleted." << std::endl;
+                return;
+            }
+        }
+        std::cout << "Item with code " << codeNo << " not found." << std::endl;
+    }
+
+    void printTotalValue() const {
+        double total = 0.0;
+        for (const auto& item : items) {
+            total += item.price;
+        }
+        std::cout << "Total value of the order: $" << std::fixed << std::setprecision(2) << total << std::endl;
+    }
+
+    void printItems() const {
+        std::cout << "Shopping List:" << std::endl;
+        for (const auto& item : items) {
+            std::cout << "Code: " << item.codeNo << ", Price: $" << std::fixed << std::setprecision(2) << item.price << std::endl;
+        }
+    }
+};
+
+int main() {
+    ShoppingList list;
+
+    list.addItem(101, 29.99);
+    list.addItem(102, 49.50);
+    list.addItem(103, 15.75);
+
+    list.printItems();
+    list.printTotalValue();
+
+    list.deleteItem(102);
+    list.printItems();
+    list.printTotalValue();
+
+    list.deleteItem(105); // Attempt to delete an item that doesn't exist
+
+    return 0;
+}
+out put:Shopping List:
+Code: 101, Price: $29.99
+Code: 102, Price: $49.50
+Code: 103, Price: $15.75
+Total value of the order: $95.24
+Item with code 102 deleted.
+Shopping List:
+Code: 101, Price: $29.99
+Code: 103, Price: $15.75
+Total value of the order: $45.74
+Item with code 105 not found.
