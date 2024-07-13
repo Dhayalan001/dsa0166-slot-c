@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+class Manager {
+private:
+    std::string name;
+    int age;
+
+public:
+    // Constructor to initialize manager details
+    Manager(const std::string& name, int age) : name(name), age(age) {}
+
+    // Default constructor
+    Manager() : name(""), age(0) {}
+
+    // Function to set manager details
+    void setDetails(const std::string& name, int age) {
+        this->name = name;
+        this->age = age;
+    }
+
+    // Function to display manager details
+    void displayDetails() const {
+        std::cout << "Name: " << name << ", Age: " << age << std::endl;
+    }
+};
+
+int main() {
+    const int numberOfManagers = 3;
+    Manager managers[numberOfManagers];
+
+    // Setting details for each manager
+    managers[0].setDetails("John Doe", 45);
+    managers[1].setDetails("Jane Smith", 38);
+    managers[2].setDetails("Emily Davis", 50);
+
+    // Displaying details of each manager
+    std::cout << "Managers' Details:" << std::endl;
+    for (int i = 0; i < numberOfManagers; ++i) {
+        managers[i].displayDetails();
+    }
+
+    return 0;
+}
+out put:
+Managers' Details:
+Name: John Doe, Age: 45
+Name: Jane Smith, Age: 38
+Name: Emily Davis, Age: 50
