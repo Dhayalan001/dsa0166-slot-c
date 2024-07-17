@@ -1,0 +1,29 @@
+#include <iostream>
+
+class ClassA;  // Forward declaration
+
+class ClassB {
+    int num;
+public:
+    ClassB(int n) : num(n) {}
+    friend int findMax(ClassA, ClassB);
+};
+
+class ClassA {
+    int num;
+public:
+    ClassA(int n) : num(n) {}
+    friend int findMax(ClassA, ClassB);
+};
+
+int findMax(ClassA a, ClassB b) {
+    return (a.num > b.num) ? a.num : b.num;
+}
+
+int main() {
+    ClassA a(10);
+    ClassB b(20);
+    std::cout << "Maximum: " << findMax(a, b) << std::endl;
+    return 0;
+}
+out put:Maximum: 20
