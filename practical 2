@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+
+class Item {
+public:
+    int code;
+    double price;
+    Item(int c, double p) : code(c), price(p) {}
+};
+
+class ShoppingList {
+    std::vector<Item> items;
+public:
+    void addItem(int code, double price) {
+        items.push_back(Item(code, price));
+    }
+    
+    void deleteItem(int code) {
+        items.erase(std::remove_if(items.begin(), items.end(), [&](Item &item) { return item.code == code; }), items.end());
+    }
+    
+    void printTotal() const {
+        double total = 0;
+        for (const auto &item : items)
+            total += item.price;
+        std::cout << "Total value of order: " << total << std::endl;
+    }
+};
+
+int main() {
+    ShoppingList list;
+    list.addItem(101, 29.99);
+    list.addItem(102, 15.75);
+    list.addItem(103, 9.99);
+    list.deleteItem(102);
+    list.printTotal();
+    return 0;
+}
+out put:Total value of order: 39.98
