@@ -1,0 +1,48 @@
+#include <iostream>
+
+class class_2;  // Forward declaration
+
+class class_1 {
+    int value;
+public:
+    class_1(int v) : value(v) {}
+    friend void swapValues(class_1 &, class_2 &);
+    void display() const { std::cout << "class_1 value: " << value << std::endl; }
+};
+
+class class_2 {
+    int value;
+public:
+    class_2(int v) : value(v) {}
+    friend void swapValues(class_1 &, class_2 &);
+    void display() const { std::cout << "class_2 value: " << value << std::endl; }
+};
+
+void swapValues(class_1 &c1, class_2 &c2) {
+    int temp = c1.value;
+    c1.value = c2.value;
+    c2.value = temp;
+}
+
+int main() {
+    class_1 obj1(10);
+    class_2 obj2(20);
+    
+    std::cout << "Before swap:" << std::endl;
+    obj1.display();
+    obj2.display();
+    
+    swapValues(obj1, obj2);
+    
+    std::cout << "After swap:" << std::endl;
+    obj1.display();
+    obj2.display();
+    
+    return 0;
+}
+out put:Before swap:
+class_1 value: 10
+class_2 value: 20
+After swap:
+class_1 value: 20
+class_2 value: 10
