@@ -1,0 +1,41 @@
+#include <iostream>
+#include <fstream>
+#include <vector>
+
+struct Employee {
+    std::string name;
+    int id;
+    double salary;
+};
+
+void addEmployee(const std::string &filename) {
+    std::ofstream file(filename, std::ios::app);
+    Employee emp;
+    std::cout << "Enter Employee Name, ID and Salary: ";
+    std::cin >> emp.name >> emp.id >> emp.salary;
+    file << emp.name << ' ' << emp.id << ' ' << emp.salary << '\n';
+}
+
+void displayEmployees(const std::string &filename) {
+    std::ifstream file(filename);
+    Employee emp;
+    while (file >> emp.name >> emp.id >> emp.salary) {
+        std::cout << "Name: " << emp.name << ", ID: " << emp.id << ", Salary: " << emp.salary << '\n';
+    }
+}
+
+int main() {
+    std::string filename = "employees.txt";
+    int choice;
+    do {
+        std::cout << "1. Add Employee\n2. Display Employees\n3. Exit\nChoose an option: ";
+        std::cin >> choice;
+        if (choice == 1) addEmployee(filename);
+        else if (choice == 2) displayEmployees(filename);
+    } while (choice != 3);
+    return 0;
+}
+out put:1. Add Employee
+2. Display Employees
+3. Exit
+Choose an option: 3
