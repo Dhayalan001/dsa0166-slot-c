@@ -1,0 +1,28 @@
+#include <iostream>
+#include <iomanip> // for std::setprecision
+
+int main() {
+    double num = 123.456789;
+
+    // Setting precision to 2
+    std::cout << std::setprecision(2) << num << std::endl;
+
+    // Setting scientific format
+    std::cout.setf(std::ios::scientific, std::ios::floatfield);
+    std::cout << num << std::endl;
+
+    // Setting fixed format and precision to 4
+    std::cout.setf(std::ios::fixed, std::ios::floatfield);
+    std::cout << std::setprecision(4) << num << std::endl;
+
+    // Unsetting fixed format (goes back to default)
+    std::cout.unsetf(std::ios::floatfield);
+    std::cout << num << std::endl;
+
+    return 0;
+}
+out put:
+1.2e+02
+1.23e+02
+123.4568
+1.2e+02
