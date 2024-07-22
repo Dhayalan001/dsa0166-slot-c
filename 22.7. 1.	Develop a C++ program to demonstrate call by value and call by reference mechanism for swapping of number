@@ -1,0 +1,36 @@
+#include <iostream>
+
+// Call by value
+void swapByValue(int a, int b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+// Call by reference
+void swapByReference(int &a, int &b) {
+    int temp = a;
+    a = b;
+    b = temp;
+}
+
+int main() {
+    int x = 10, y = 20;
+
+    // Demonstrate call by value
+    std::cout << "Before swap by value: x = " << x << ", y = " << y << std::endl;
+    swapByValue(x, y);
+    std::cout << "After swap by value: x = " << x << ", y = " << y << std::endl;
+
+    // Demonstrate call by reference
+    std::cout << "Before swap by reference: x = " << x << ", y = " << y << std::endl;
+    swapByReference(x, y);
+    std::cout << "After swap by reference: x = " << x << ", y = " << y << std::endl;
+
+    return 0;
+}
+output:
+Before swap by value: x = 10, y = 20
+After swap by value: x = 10, y = 20
+Before swap by reference: x = 10, y = 20
+After swap by reference: x = 20, y = 10
