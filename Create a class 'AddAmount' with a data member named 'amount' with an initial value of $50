@@ -1,0 +1,23 @@
+#include <iostream>
+
+class AddAmount {
+    int amount;
+public:
+    AddAmount() : amount(50) {}
+    AddAmount(int add) : amount(50 + add) {}
+    void display() const { std::cout << "Final amount: $" << amount << std::endl; }
+};
+
+int main() {
+    AddAmount a1;
+    AddAmount a2(30);
+
+    a1.display();  // Output: Final amount: $50
+    a2.display();  // Output: Final amount: $80
+
+    return 0;
+}
+out put:
+Final amount: $50
+Final amount: $80
+
