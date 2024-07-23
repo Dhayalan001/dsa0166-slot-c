@@ -1,0 +1,22 @@
+#include <iostream>
+
+class Add {
+    int value;
+public:
+    Add(int v = 0) : value(v) {}
+    Add operator+(const Add& other) {
+        return Add(value + other.value);
+    }
+    void display() const {
+        std::cout << "Sum: " << value << std::endl;
+    }
+};
+
+int main() {
+    Add a1(5), a2(10);
+    Add a3 = a1 + a2;
+    a3.display();  // Output: Sum: 15
+    return 0;
+}
+out put:
+Sum: 15
