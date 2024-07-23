@@ -1,0 +1,22 @@
+#include <iostream>
+
+class Shape {
+public:
+    void area(int side) {
+        std::cout << "Area of Square: " << side * side << std::endl;
+    }
+    void area(int length, int breadth) {
+        std::cout << "Area of Rectangle: " << length * breadth << std::endl;
+    }
+};
+
+int main() {
+    Shape s;
+    s.area(5);          // Area of Square
+    s.area(4, 6);       // Area of Rectangle
+    return 0;
+}
+out put:
+Area of Square: 25
+Area of Rectangle: 24
+
