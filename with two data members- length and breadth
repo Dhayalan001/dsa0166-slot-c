@@ -1,0 +1,24 @@
+#include <iostream>
+
+class Rectangle {
+    int length, breadth;
+public:
+    Rectangle() : length(0), breadth(0) {}
+    Rectangle(int l, int b) : length(l), breadth(b) {}
+    Rectangle(int side) : length(side), breadth(side) {}
+    int area() const { return length * breadth; }
+};
+
+int main() {
+    Rectangle r1, r2(4, 5), r3(6);
+
+    std::cout << "Area of Rectangle with no parameters: " << r1.area() << std::endl;
+    std::cout << "Area of Rectangle with two parameters (4, 5): " << r2.area() << std::endl;
+    std::cout << "Area of Rectangle with one parameter (6): " << r3.area() << std::endl;
+
+    return 0;
+}
+out put:
+Area of Rectangle with no parameters: 0
+Area of Rectangle with two parameters (4, 5): 20
+Area of Rectangle with one parameter (6): 36
