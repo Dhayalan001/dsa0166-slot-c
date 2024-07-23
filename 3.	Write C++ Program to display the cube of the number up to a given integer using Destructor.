@@ -1,0 +1,25 @@
+#include <iostream>
+
+class Cube {
+    int n;
+public:
+    Cube(int num) : n(num) {}
+    ~Cube() {
+        std::cout << "Cubes up to " << n << ": ";
+        for (int i = 1; i <= n; ++i) {
+            std::cout << i * i * i << " ";
+        }
+        std::cout << std::endl;
+    }
+};
+
+int main() {
+    int n;
+    std::cout << "Enter a number: ";
+    std::cin >> n;
+    Cube c(n);
+    return 0;
+}
+out put:
+Enter a number: 5
+Cubes up to 5: 1 8 27 64 125 
