@@ -18,3 +18,6 @@ int main() {
     cs.input();
     return 0;
 }
+out put:
+Enter a number: 5
+Cubes up to 5: 1 8 27 64 125 
