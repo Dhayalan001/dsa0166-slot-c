@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string>
+
+class Student {
+    std::string name;
+public:
+    Student(std::string n = "Unknown") : name(n) {}
+    void printName() { std::cout << name << std::endl; }
+};
+
+int main() {
+    Student s1("Alice"), s2;
+    s1.printName(); // Output: Alice
+    s2.printName(); // Output: Unknown
+    return 0;
+}
+out put:
+Alice
+Unknown
