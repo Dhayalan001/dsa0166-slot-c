@@ -1,0 +1,20 @@
+#include <iostream>
+
+class CubeSeries {
+    int n;
+public:
+    void input() { std::cout << "Enter a number: "; std::cin >> n; }
+    ~CubeSeries() {
+        std::cout << "Cubes up to " << n << ": ";
+        for (int i = 1; i <= n; ++i) {
+            std::cout << i * i * i << " ";
+        }
+        std::cout << std::endl;
+    }
+};
+
+int main() {
+    CubeSeries cs;
+    cs.input();
+    return 0;
+}
