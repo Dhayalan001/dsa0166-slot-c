@@ -1,0 +1,43 @@
+#include <iostream>
+using namespace std;
+
+class Number {
+public:
+    int value;
+    void getValue() {
+        cout << "Enter a number: ";
+        cin >> value;
+    }
+};
+
+class Square : public Number {
+public:
+    void printSquare() {
+        cout << "Square: " << value * value << '\n';
+    }
+};
+
+class Cube : public Number {
+public:
+    void printCube() {
+        cout << "Cube: " << value * value * value << '\n';
+    }
+};
+
+int main() {
+    Square sq;
+    Cube cb;
+
+    sq.getValue();
+    sq.printSquare();
+
+    cb.value = sq.value;  // Reuse the input value
+    cb.printCube();
+
+    return 0;
+}
+out put:
+Enter a number: 3
+Square: 9
+Cube: 27
+
