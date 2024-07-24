@@ -1,0 +1,65 @@
+#include <iostream>
+using namespace std;
+
+class Employee {
+public:
+    int id;
+    string name;
+    float basicSalary;
+
+    void getDetails() {
+        cout << "Enter Employee ID: ";
+        cin >> id;
+        cout << "Enter Employee Name: ";
+        cin >> name;
+        cout << "Enter basic salary of Employee: ";
+        cin >> basicSalary;
+    }
+};
+
+class Allowance : virtual public Employee {
+public:
+    float hra, da;
+
+    void calculateAllowance() {
+        hra = 0.1 * basicSalary;
+        da = 0.1 * basicSalary;
+    }
+};
+
+class Deduction : virtual public Employee {
+public:
+    float pf;
+
+    void calculateDeduction() {
+        pf = 0.05 * basicSalary;
+    }
+};
+
+class Salary : public Allowance, public Deduction {
+public:
+    float grossSalary, netSalary;
+
+    void calculateSalary() {
+        calculateAllowance();
+        calculateDeduction();
+        grossSalary = basicSalary + hra + da;
+        netSalary = grossSalary - pf;
+    }
+
+    void displaySalary() {
+        cout << "Gross Salary = Rs." << grossSalary << '\n';
+        cout << "Net Salary = Rs." << netSalary << '\n';
+    }
+};
+
+int main() {
+    Salary emp;
+    emp.getDetails();
+    emp.calculateSalary();
+    emp.displaySalary();
+    return 0;
+}
+out put:
+Gross Salary = Rs.48000
+Net Salary = Rs.46000
