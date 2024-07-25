@@ -1,0 +1,63 @@
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    float length, breadth;
+    void getDimensions() {
+        cout << "Length: ";
+        cin >> length;
+        cout << "Breadth: ";
+        cin >> breadth;
+    }
+};
+
+class Rectangle : public Shape {
+public:
+    float area() { return length * breadth; }
+};
+
+class Cuboid : public Rectangle {
+public:
+    float height;
+    void getHeight() {
+        cout << "Height: ";
+        cin >> height;
+    }
+    float volume() { return length * breadth * height; }
+};
+
+int main() {
+    Cuboid c;
+    c.getDimensions();
+    cout << "Area of rectangle: " << c.area() << '\n';
+    c.getHeight();
+    cout << "Volume of cuboid: " << c.volume() << '\n';
+    return 0;
+}
+out put:
+Length: 10
+Breadth: 10
+Height: 10
+
+other test cases:
+Area of rectangle: 100
+Volume of cuboid: 1000
+
+Length: 50
+Breadth: 40
+Height: 20
+Area of rectangle: 2000
+Volume of cuboid: 40000
+
+Length: -5
+Breadth: 10
+Height: 5
+Area of rectangle: -50
+Volume of cuboid: -250
+
+Length: 6
+Breadth: 0.6
+Height: 3
+Area of rectangle: 3.6
+Volume of cuboid: 10.8
