@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Grandfather {
+protected:
+    int property;
+public:
+    Grandfather(int p) : property(p) {}
+    int getProperty() { return property; }
+};
+
+class Father : public Grandfather {
+public:
+    Father(int p) : Grandfather(p) {}
+};
+
+class Grandson : public Father {
+public:
+    Grandson(int p) : Father(p) {}
+    void receiveProperty() {
+        if (property > 0) {
+            cout << "Received the Property\n";
+        } else {
+            cout << "Invalid Property Value\n";
+        }
+    }
+};
+
+int main() {
+    string input;
+    cout << "Enter the property value: ";
+    cin >> input;
+
+    try {
+        int value = stoi(input);
+        Grandson gs(value);
+        gs.receiveProperty();
+    } catch (exception&) {
+        cout << "Invalid Input\n";
+    }
+    return 0;
+}
+out put:
+Enter the property value: -5
+Invalid Property Value
+
+Enter the property value: 6!
+Invalid Input
+
+Enter the property value: FIVE
+Invalid Input
+
+Enter the property value: 87.65
+Invalid Input
